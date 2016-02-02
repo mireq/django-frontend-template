@@ -2,9 +2,11 @@
 from __future__ import unicode_literals
 
 from django.conf.urls import url
-from django.contrib import admin
+
+from .views import ShowTemplate
 
 
 urlpatterns = [
-	url(r'^admin/', admin.site.urls),
+	url('^$', ShowTemplate.as_view(), kwargs={'template': 'index.html'}),
+	url('^(?P<template>.*)$', ShowTemplate.as_view()),
 ]
