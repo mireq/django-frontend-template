@@ -12,7 +12,7 @@ def get_sequence(value):
 	"""
 	Return sequence of defined length. Usage:
 
-	{% for x in 3|get_range %}
+	{% for x in 3|get_sequence %}
 		<li>{{ x }}</li>
 	{% endfor %}
 	"""

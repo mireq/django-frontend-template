@@ -4,5 +4,11 @@
 {% block bodyclass %}index {{ block.super }}{% endblock %}
 
 {% block content %}
-	
+	<h1>Hello world</h1>
+
+	<div class="row">
+		{% for x in 6|get_sequence %}
+			{% include "partials/box_example.html" %}
+		{% endfor %}
+	</div>
 {% endblock %}
