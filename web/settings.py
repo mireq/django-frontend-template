@@ -17,6 +17,7 @@ INSTALLED_APPS = [
 	'django.contrib.sessions',
 	'django.contrib.messages',
 	'django.contrib.staticfiles',
+	'compressor',
 	'design_utils',
 ]
 
@@ -46,6 +47,8 @@ TEMPLATES = [
 			],
 			'builtins': [
 				'design_utils.templatetags.design_utils_tags',
+				'compressor.templatetags.compress',
+				'django.contrib.staticfiles.templatetags.staticfiles',
 			]
 		},
 	},
@@ -69,6 +72,9 @@ AUTH_PASSWORD_VALIDATORS = [
 	{'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',},
 ]
 
+COMPRESS_PRECOMPILERS = (
+	('text/x-scss', 'django_libsass.SassCompiler'),
+)
 
 LANGUAGE_CODE = 'en-us'
 
@@ -81,3 +87,15 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_generated', 'static')
+STATICFILES_FINDERS = (
+	'django.contrib.staticfiles.finders.FileSystemFinder',
+	'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+	'compressor.finders.CompressorFinder',
+)
+STATICFILES_DIRS = (
+	os.path.join(BASE_DIR, 'static'),
+)
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static_generated', 'media')

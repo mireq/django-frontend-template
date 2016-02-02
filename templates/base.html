@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block head_title %}Site name{% endblock %}</title>
+	<meta charset="utf-8" />
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+	{% block extraheaders %}{% endblock %}
+	{% compress css %}
+		<link rel="stylesheet" type="text/x-scss" href="{% static "css/style.scss" %}" />
+	{% endcompress %}
+</head>
+<body class="{% block bodyclass %}{% endblock %}">
+{% block body %}
+	{% block header %}
+	{% endblock %}
+
+	{% block content %}
+	{% endblock %}
+
+	{% block footer %}
+	{% endblock %}
+{% endblock %}
+
+{% block extrajs %}
+{% endblock %}
+</body>
+</html>
+
