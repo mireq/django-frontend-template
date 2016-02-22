@@ -32,8 +32,6 @@ def get_font_properties(fontfile):
 		basename = fontname
 		fontattrs = ''
 
-	print(fontattrs)
-
 	font_weight = 400
 	italic = False
 
@@ -41,19 +39,19 @@ def get_font_properties(fontfile):
 		italic = True
 		fontattrs = fontattrs.replace('Italic', '')
 
-	if 'Thin' in fontattrs or 'Hairline' in fontattrs:
+	if 'Thin' in fontattrs or 'Hairline' in fontattrs or '100' in fontattrs:
 		font_weight = 100
-	elif 'Extralight' in fontattrs or 'Ultralight' in fontattrs:
+	elif 'Extralight' in fontattrs or 'Ultralight' in fontattrs or '200' in fontattrs:
 		font_weight = 200
-	elif 'Semibold' in fontattrs or 'Demibold' in fontattrs:
+	elif 'Semibold' in fontattrs or 'Demibold' in fontattrs or '600' in fontattrs:
 		font_weight = 600
-	elif 'Extrabold' in fontattrs or 'Ultrabold' in fontattrs:
+	elif 'Extrabold' in fontattrs or 'Ultrabold' in fontattrs or '800' in fontattrs:
 		font_weight = 800
-	elif 'Light' in fontattrs:
+	elif 'Light' in fontattrs or '300' in fontattrs:
 		font_weight = 300
-	elif 'Normal' in fontattrs:
+	elif 'Normal' in fontattrs or '400' in fontattrs:
 		font_weight = 400
-	elif 'Bold' in fontattrs:
+	elif 'Bold' in fontattrs or '700' in fontattrs:
 		font_weight = 700
 
 	return {
