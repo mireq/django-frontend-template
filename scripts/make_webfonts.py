@@ -20,6 +20,7 @@ def find_font_source_files():
 			basename, ext = os.path.splitext(fontname)
 			if ext.lower() == scan_ext and not basename in scanned_fonts:
 				font_filenames.append(fontname)
+				scanned_fonts.add(basename)
 	return font_filenames
 
 
