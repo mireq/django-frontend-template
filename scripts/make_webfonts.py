@@ -4,11 +4,12 @@ from __future__ import unicode_literals
 
 import fontforge
 import os
+import subprocess
 import sys
 
 
 FONT_FILES_SOURCE_EXTENSIONS = ('.otf', '.ttf')
-GENERATE_FONTS = ('.woff', '.eot', '.svg', '.ttf')
+GENERATE_FONTS = ('.woff', '.eot', '.svg', '.ttf', '.woff2')
 
 
 def find_font_source_files():
@@ -92,9 +93,12 @@ def main():
 		for filename in find_font_source_files():
 			fontfile = fontforge.open(filename)
 			for suffix in GENERATE_FONTS:
-				font_output = os.path.splitext(filename)[0] + suffix
-				if not os.path.exists(font_output):
-					fontfile.generate(font_output)
+				if suffix == '.woff2':
+					subprocess.call(['woff2_compress', os.path.splitext(filename)[0] + '.ttf'], stdout=subprocess.PIPE)
+				else:
+					font_output = os.path.splitext(filename)[0] + suffix
+					if not os.path.exists(font_output):
+						fontfile.generate(font_output)
 			write_scss_font(fontfile, filename, scss_fp)
 
 
