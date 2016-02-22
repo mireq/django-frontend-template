@@ -53,6 +53,8 @@ def get_font_properties(fontfile):
 		font_weight = 300
 	elif 'Normal' in fontattrs or '400' in fontattrs:
 		font_weight = 400
+	elif '500' in fontattrs:
+		font_weight = 500
 	elif 'Bold' in fontattrs or '700' in fontattrs:
 		font_weight = 700
 
