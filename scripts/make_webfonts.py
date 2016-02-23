@@ -57,6 +57,8 @@ def get_font_properties(fontfile):
 		font_weight = 500
 	elif 'Bold' in fontattrs or '700' in fontattrs:
 		font_weight = 700
+	elif 'Black' in fontattrs or '900' in fontattrs:
+		font_weight = 900
 
 	return {
 		'basename': basename,
