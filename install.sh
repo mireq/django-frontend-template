@@ -70,12 +70,12 @@ update: .stamp_settings
 update2: .stamp_settings
 	venv/bin/pip install -r ${PROJECT}/requirements.txt
 	#${DJANGO_MANAGE} compilesprites
-	#${DJANGO_MANAGE} migrate
+	${DJANGO_MANAGE} migrate
 	#${DJANGO_MANAGE} compilemessages
 
 .stamp_sampledata: .stamp_settings
 	#${DJANGO_MANAGE} compilesprites
-	#${DJANGO_MANAGE} migrate
+	${DJANGO_MANAGE} migrate
 	#${DJANGO_MANAGE} compilemessages
 	#${DJANGO_MANAGE} loaddata forum/data/categories.json
 	#${DJANGO_MANAGE} loaddata news/data/categories.json
