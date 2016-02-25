@@ -60,7 +60,7 @@ compilemessages: .stamp_settings
 	${DJANGO_MANAGE} compilemessages
 
 runserver: .stamp_sampledata
-	${DJANGO_MANAGE} runserver_plus
+	${DJANGO_MANAGE} runserver
 
 update: .stamp_settings
 	cd ${PROJECT}; git pull; git submodule sync --recursive
