@@ -101,5 +101,5 @@ EOF
 
 if [[ "$DUMPMAKE" == "" ]]
 then
-	make -C ${PROJECT}
+	make -C project
 fi
