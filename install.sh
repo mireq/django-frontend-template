@@ -1,7 +1,6 @@
 #!/bin/sh
 
 DUMPMAKE=
-PROJECT="project"
 while true; do
 	case "$1" in
 		--dumpmake ) DUMPMAKE="$2"; shift 2 ;;
@@ -13,13 +12,14 @@ done
 MAKEFILE=$DUMPMAKE
 if [[ "$DUMPMAKE" == "" ]]
 then
-	MAKEFILE="${PROJECT}/Makefile"
+	MAKEFILE="project/Makefile"
 fi
 
-mkdir -p ${PROJECT}
+mkdir -p project
 cat << 'EOF' > ${MAKEFILE}
 .PHONY: all cimpilesprites migrate update update2 resetdb
 
+PROJECT=project
 PYTHON=python2.7
 VENV_PYTHON=venv/bin/python
 DJANGO_MANAGE=cd ${PROJECT}&&DJANGO_SETTINGS_MODULE=web.settings_local ../venv/bin/python manage.py
