@@ -1,0 +1,17 @@
+/* CSS for specific pages */
+
+body.index {
+
+background: #ddd;
+
+a {
+	@media #{$xlarge-up} {
+		color: blue;
+	}
+}
+
+} /* index */
+
+
+body.anotherpage {
+} /* anotherpage */

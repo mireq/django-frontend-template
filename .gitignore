@@ -1,0 +1,8 @@
+/static/CACHE/
+/db.sqlite3
+/static/img/sprites*.png
+/static/css/_sprites*.scss
+/cache
+/static_generated
+*.pyc
+*.mo
