@@ -1,5 +1,5 @@
-Django>=1.9
+Django
 django-compressor
 django-libsass
-libsass<=0.10.0
+libsass
 pip-tools
