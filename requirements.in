@@ -1,5 +1,6 @@
 Django
 django-compressor
+django-compressor-autoprefixer
 django-libsass
 libsass
 pip-tools
