@@ -72,9 +72,23 @@ AUTH_PASSWORD_VALIDATORS = [
 	{'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',},
 ]
 
+COMPRESS_ENABLED = True
+
 COMPRESS_PRECOMPILERS = (
 	('text/x-scss', 'django_libsass.SassCompiler'),
 )
+
+# autoprefixer
+
+#COMPRESS_CSS_FILTERS = (
+#	'django_compressor_autoprefixer.AutoprefixerFilter',
+#)
+
+#COMPRESS_AUTOPREFIXER_BINARY = '/usr/bin/postcss'
+
+#COMPRESS_AUTOPREFIXER_ARGS = '--use autoprefixer'
+
+LIBSASS_SOURCEMAPS = True
 
 LANGUAGE_CODE = 'en-us'
 
