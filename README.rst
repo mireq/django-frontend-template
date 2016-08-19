@@ -16,4 +16,4 @@ To run test server
 ::
 
     cd project
-    make run
+    make runserver
