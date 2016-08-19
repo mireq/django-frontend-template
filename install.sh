@@ -60,7 +60,7 @@ compilemessages: .stamp_settings
 	${DJANGO_MANAGE} compilemessages
 
 runserver: .stamp_sampledata
-	${DJANGO_MANAGE} runserver
+	${DJANGO_MANAGE} runserver 0.0.0.0:8000
 
 update: .stamp_settings
 	cd ${PROJECT}; git pull; git submodule sync --recursive
@@ -96,6 +96,7 @@ localinstall: .stamp_sampledata
 	@echo "================================================"
 	@echo "Installation successfull"
 	@echo "For start enter: cd ${PROJECT}; make runserver"
+	@echo "Open: http://127.0.0.1:8000 in browser"
 	@echo "================================================"
 EOF
 
