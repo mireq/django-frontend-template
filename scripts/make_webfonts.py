@@ -2,14 +2,17 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-import fontforge
 import os
+import string
 import subprocess
 import sys
+
+import fontforge
 
 
 FONT_FILES_SOURCE_EXTENSIONS = ('.otf', '.ttf')
 GENERATE_FONTS = ('.woff', '.eot', '.svg', '.ttf', '.woff2')
+ALLOWED_CHARS = string.printable + 'ˇ^˘°˛`˙´˝¨¸„“äáčďéěíľĺňôóřŕšťúůýžÄÁČĎÉĚÍĽĹŇÔÓŘŔŠŤÚŮÝŽ'
 
 
 def find_font_source_files():
@@ -92,6 +95,14 @@ def write_scss_font(fontfile, sourcename, fp):
 	fp.write("}\n\n");
 
 
+def minimalize_font(font):
+	for char in ALLOWED_CHARS:
+		font.selection[ord(char)] = True
+	font.selection.invert()
+	for i in font.selection.byGlyphs:
+		font.removeGlyph(i)
+
+
 def main():
 	with open('_fonts.scss', 'w') as scss_fp:
 		for filename in find_font_source_files():
@@ -101,8 +112,9 @@ def main():
 					subprocess.call(['woff2_compress', os.path.splitext(filename)[0] + '.ttf'], stdout=subprocess.PIPE)
 				else:
 					font_output = os.path.splitext(filename)[0] + suffix
-					if not os.path.exists(font_output):
-						fontfile.generate(font_output)
+					if ALLOWED_CHARS is not None:
+						minimalize_font(fontfile)
+					fontfile.generate(font_output)
 			write_scss_font(fontfile, filename, scss_fp)
 
 
