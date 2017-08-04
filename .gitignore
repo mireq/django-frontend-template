@@ -1,8 +1,11 @@
 /static/CACHE/
+/static/css/_sprites_generated*.scss
+/static/img/sprites_generated*.png
 /db.sqlite3
 /static/img/generated_sprites*.png
 /static/css/_generated_sprites*.scss
 /cache
 /static_generated
+__pycache__
 *.pyc
 *.mo

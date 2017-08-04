@@ -1,4 +1,11 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 import os
+
+from .assets import ASSETS, SPRITES
+
+ASSETS_MANAGER_FILES = ASSETS
+ASSETS_MANAGER_SPRITES = SPRITES
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -19,6 +26,7 @@ INSTALLED_APPS = [
 	'django.contrib.staticfiles',
 	'compressor',
 	'design_utils',
+	'django_assets_manager',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -49,6 +57,7 @@ TEMPLATES = [
 				'design_utils.templatetags.design_utils_tags',
 				'compressor.templatetags.compress',
 				'django.contrib.staticfiles.templatetags.staticfiles',
+				'django_assets_manager.templatetags.assets_manager',
 			]
 		},
 	},
