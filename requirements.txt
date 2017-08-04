@@ -4,16 +4,15 @@
 #
 #    pip-compile --output-file requirements.txt requirements.in
 #
-
-click==6.6                # via pip-tools
+click==6.7                # via pip-tools
 django-appconf==1.0.2     # via django-compressor
-django-compressor-autoprefixer==0.1.0
-django-compressor==2.1
+django-compressor==2.1.1
 django-libsass==0.7
-django==1.10
+django==1.11.4
 first==2.0.1              # via pip-tools
-libsass==0.11.1
-pip-tools==1.7.0
+libsass==0.13.2
+pip-tools==1.9.0
+pytz==2017.2              # via django
 rcssmin==1.0.6            # via django-compressor
 rjsmin==1.0.12            # via django-compressor
 six==1.10.0               # via libsass, pip-tools

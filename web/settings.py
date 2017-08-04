@@ -78,15 +78,14 @@ COMPRESS_PRECOMPILERS = (
 	('text/x-scss', 'django_libsass.SassCompiler'),
 )
 
-# autoprefixer
+COMPRESS_CSS_FILTERS = (
+	'web.compress.PostcssFilter',
+)
 
-#COMPRESS_CSS_FILTERS = (
-#	'django_compressor_autoprefixer.AutoprefixerFilter',
-#)
+COMPRESS_POSTCSS_BINARY = 'postcss'
+COMPRESS_POSTCSS_ARGS = '--use autoprefixer'
 
-#COMPRESS_AUTOPREFIXER_BINARY = '/usr/bin/postcss'
-
-#COMPRESS_AUTOPREFIXER_ARGS = '--use autoprefixer'
+COMPRESS_REBUILD_TIMEOUT = 1
 
 LIBSASS_SOURCEMAPS = True
 
