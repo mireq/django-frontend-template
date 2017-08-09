@@ -17,7 +17,7 @@ fi
 
 mkdir -p project
 cat << 'EOF' > ${MAKEFILE}
-.PHONY: all cimpilesprites migrate update update2 resetdb
+.PHONY: all compilesprites migrate update update2 resetdb
 
 PROJECT=project
 PYTHON=python2.7
