@@ -11,8 +11,9 @@ import fontforge
 
 
 FONT_FILES_SOURCE_EXTENSIONS = ('.otf', '.woff', '.ttf')
-GENERATE_FONTS = ('.woff', '.eot', '.svg', '.ttf', '.woff2')
-ALLOWED_CHARS = string.printable + ' ˇ^˘°˛`˙´˝¨¸„“äáčďéěíľĺňôóřŕšťúůýžÄÁČĎÉĚÍĽĹŇÔÓŘŔŠŤÚŮÝŽ'
+GENERATE_FONTS = ('.ttf', '.woff', '.eot', '.svg', '.woff2')
+ALLOWED_CHARS = string.printable + '  ˇ^˘°˛`˙´˝¨¸„“äáčďéěíľĺňôóřŕšťúůýžÄÁČĎÉĚÍĽĹŇÔÓŘŔŠŤÚŮÝŽ€'
+CLEAN_GLYPH_CLASSES = set(['baseglyph', 'baseligature', 'mark'])
 
 
 def find_font_source_files():
@@ -100,7 +101,7 @@ def minimalize_font(font):
 		font.selection[ord(char)] = True
 	font.selection.invert()
 	for i in font.selection.byGlyphs:
-		if i.glyphclass == 'baseglyph':
+		if i.glyphclass in CLEAN_GLYPH_CLASSES:
 			font.removeGlyph(i)
 
 
