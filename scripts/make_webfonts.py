@@ -12,7 +12,7 @@ import fontforge
 
 FONT_FILES_SOURCE_EXTENSIONS = ('.otf', '.woff', '.ttf')
 GENERATE_FONTS = ('.ttf', '.woff', '.eot', '.svg', '.woff2')
-ALLOWED_CHARS = string.printable + '  ˇ^˘°˛`˙´˝¨¸„“äáčďéěíľĺňôóřŕšťúůýžÄÁČĎÉĚÍĽĹŇÔÓŘŔŠŤÚŮÝŽ€'
+ALLOWED_CHARS = string.printable + '  ˇ^˘°˛`˙´˝¨\'"¸„“”äáčďéěíľĺňôóřŕšťúůýžÄÁČĎÉĚÍĽĹŇÔÓŘŔŠŤÚŮÝŽ€'
 CLEAN_GLYPH_CLASSES = set(['baseglyph', 'baseligature', 'mark'])
 
 
