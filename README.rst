@@ -30,3 +30,32 @@ Then edit web/settings_local.py and add line:
 ::
 
     COMPRESS_POSTCSS_BINARY = '/path/to/postcss'
+
+Sprites
+-------
+
+This project has builtin support for sprites with standard and @2x (retina)
+resolution.
+
+Sprites are compiled with command:
+
+::
+
+    make compilesprites
+
+Source images are defined in web/assets.py in list named 'images':
+
+::
+
+    { 'name': 'check', 'src': 'img/sprites/check.png' },
+    { 'name': 'radio', 'src': 'img/sprites/radio.png' },
+
+Sprites are adressed using name attribute:
+
+::
+
+    /* file.scss */
+    .icon-checkbox {
+        @include sprite(check);
+        display: block;
+    }
