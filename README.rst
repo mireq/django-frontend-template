@@ -17,3 +17,16 @@ To run test server
 
     cd project
     make runserver
+
+To enable autoprefixer (if not enabled automatically)
+-----------------------------------------------------
+
+::
+
+    npm install postcss-cli autoprefixer
+
+Then edit web/settings_local.py and add line:
+
+::
+
+    COMPRESS_POSTCSS_BINARY = '/path/to/postcss'
