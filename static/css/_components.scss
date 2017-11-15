@@ -1,18 +1,13 @@
 /* Reusable components */
 
-.icon-cpu {
-	@include sprite(cpu);
+.icon-check {
+	@include sprite(check);
+	display: inline-block;
+	vertical-align: middle;
 }
 
-.icon-hdd {
-	@include sprite(hdd);
-}
-
-.icon-vol {
-	@include sprite(vol)
-}
-
-.icon {
+.icon-radio {
+	@include sprite(radio);
 	display: inline-block;
 	vertical-align: middle;
 }

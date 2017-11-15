@@ -8,8 +8,12 @@ $hdpi: "(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5
 	@return map-get(map-get($sprites, $image), h);
 }
 
-@mixin sprite-geometry($image) {
+@mixin sprite-background-position($image) {
 	background-position: map-get(map-get($sprites, $image), offset);
+}
+
+@mixin sprite-geometry($image) {
+	@include sprite-background-position($image);
 	width: sprite-width($image);
 	height: sprite-height($image);
 }
@@ -19,9 +23,7 @@ $hdpi: "(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5
 	background-image: nth(map-get($sprites, _url), 1);
 	background-size: map-get($sprites, _size);
 	@include sprite-geometry($image);
-	/*
 	@media #{$hdpi} {
 		background-image: nth(map-get($sprites, _url), 2);
 	}
-	*/
 }
