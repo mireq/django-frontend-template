@@ -21,6 +21,6 @@ class PostcssFilter(CompilerFilter):
 	def input(self, **kwargs):
 		try:
 			return super(PostcssFilter, self).input(**kwargs)
-		except FilterError as e:
+		except FilterError:
 			logger.exception("Compiler error")
 			return self.content
