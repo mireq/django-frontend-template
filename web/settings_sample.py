@@ -5,3 +5,5 @@ from .settings import *
 
 
 COMPRESS_POSTCSS_BINARY = '/usr/bin/postcss'
+
+ALLOWED_HOSTS = ['*']
