@@ -9,16 +9,16 @@ while true; do
 	esac
 done
 
-MAKEFILE=$DUMPMAKE
-if [[ "$DUMPMAKE" == "" ]]
-then
-	MAKEFILE="project/Makefile"
-fi
-
 PROJECTNAME=$1
 if [[ "$PROJECTNAME" == "" ]]
 then
 	PROJECTNAME='project'
+fi
+
+MAKEFILE=$DUMPMAKE
+if [[ "$DUMPMAKE" == "" ]]
+then
+	MAKEFILE="$PROJECTNAME/Makefile"
 fi
 
 mkdir -p $PROJECTNAME
@@ -114,5 +114,5 @@ EOF
 
 if [[ "$DUMPMAKE" == "" ]]
 then
-	make -C project
+	make -C $PROJECTNAME
 fi
