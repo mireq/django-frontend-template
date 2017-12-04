@@ -15,11 +15,23 @@ then
 	MAKEFILE="project/Makefile"
 fi
 
-mkdir -p project
+PROJECTNAME=$1
+if [[ "$PROJECTNAME" == "" ]]
+then
+	PROJECTNAME='project'
+fi
+
+mkdir -p $PROJECTNAME
+
 cat << 'EOF' > ${MAKEFILE}
 .PHONY: all compilesprites migrate update update2 resetdb
 
-PROJECT=project
+EOF
+
+echo "PROJECT=$PROJECTNAME" >> $MAKEFILE
+
+cat << 'EOF' >> ${MAKEFILE}
+
 PYTHON=python2.7
 VENV_PYTHON=venv/bin/python
 DJANGO_MANAGE=cd ${PROJECT}&&DJANGO_SETTINGS_MODULE=web.settings_local ../venv/bin/python manage.py

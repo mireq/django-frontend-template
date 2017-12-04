@@ -8,7 +8,7 @@ Install under ubuntu
 ::
 
     sudo apt-get --yes install libjpeg-dev build-essential python-dev libfreetype6-dev git
-    wget https://raw.github.com/mireq/django-frontend-template/master/install.sh&&chmod +x install.sh&&. ./install.sh
+    wget https://raw.github.com/mireq/django-frontend-template/master/install.sh&&chmod +x install.sh&&. ./install.sh project_name
 
 To run test server
 ------------------
