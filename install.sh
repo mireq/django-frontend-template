@@ -108,7 +108,7 @@ resetdb:
 localinstall: .stamp_sampledata
 	@echo "================================================"
 	@echo "Installation successfull"
-	@echo "For start enter: cd ${PROJECT_SUBDIR}; make runserver"
+	@echo "For start enter: cd ${PROJECT}; make runserver"
 	@echo "Open: http://127.0.0.1:8000 in browser"
 	@echo "================================================"
 EOF
