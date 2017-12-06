@@ -8,14 +8,26 @@ Install under ubuntu
 ::
 
     sudo apt-get --yes install libjpeg-dev build-essential python-dev libfreetype6-dev git
-    wget https://raw.github.com/mireq/django-frontend-template/master/install.sh&&chmod +x install.sh&&. ./install.sh project_name
+
+Create project
+--------------
+
+Download install script and make it executable:
+
+::
+    wget https://raw.github.com/mireq/django-frontend-template/master/install.sh&&chmod +x install.sh
+
+Create project with name `project_name`:
+
+::
+    . ./install.sh project_name
 
 To run test server
 ------------------
 
 ::
 
-    cd project
+    cd project_name
     make runserver
 
 To enable autoprefixer (if not enabled automatically)
