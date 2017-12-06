@@ -31,15 +31,16 @@ EOF
 echo "PROJECT=$PROJECTNAME" >> $MAKEFILE
 
 cat << 'EOF' >> ${MAKEFILE}
+PROJECT_SUBDIR=web
 
 PYTHON=python2.7
 VENV_PYTHON=venv/bin/python
-DJANGO_MANAGE=cd ${PROJECT}&&DJANGO_SETTINGS_MODULE=web.settings_local ../venv/bin/python manage.py
+DJANGO_MANAGE=cd ${PROJECT_SUBDIR}&&DJANGO_SETTINGS_MODULE=web.settings_local ../venv/bin/python manage.py
 
 all: localinstall
 
 .stamp_downloaded:
-	git clone --recursive https://github.com/mireq/django-frontend-template.git ${PROJECT}
+	git clone --recursive https://github.com/mireq/django-frontend-template.git ${PROJECT_SUBDIR}
 	@touch .stamp_downloaded
 
 .stamp_virtualenv: .stamp_downloaded
@@ -55,11 +56,11 @@ all: localinstall
 	@touch .stamp_setuptools
 
 .stamp_requirements: .stamp_setuptools
-	venv/bin/pip install -r ${PROJECT}/requirements.txt
+	venv/bin/pip install -r ${PROJECT_SUBDIR}/requirements.txt
 	touch .stamp_requirements
 
 .stamp_settings: .stamp_requirements
-	cp ${PROJECT}/web/settings_sample.py ${PROJECT}/web/settings_local.py
+	cp ${PROJECT_SUBDIR}/web/settings_sample.py ${PROJECT_SUBDIR}/web/settings_local.py
 	@touch .stamp_settings
 
 compilesprites: .stamp_settings
@@ -75,12 +76,12 @@ runserver: .stamp_sampledata
 	${DJANGO_MANAGE} runserver 0.0.0.0:8000
 
 update: .stamp_settings
-	cd ${PROJECT}; git pull; git submodule sync --recursive
-	@./${PROJECT}/install.sh --dumpmake Makefile
+	cd ${PROJECT_SUBDIR}; git pull; git submodule sync --recursive
+	@./${PROJECT_SUBDIR}/install.sh --dumpmake Makefile
 	make update2
 
 update2: .stamp_settings
-	venv/bin/pip install -r ${PROJECT}/requirements.txt
+	venv/bin/pip install -r ${PROJECT_SUBDIR}/requirements.txt
 	${DJANGO_MANAGE} compilesprites
 	${DJANGO_MANAGE} migrate
 	#${DJANGO_MANAGE} compilemessages
@@ -97,7 +98,7 @@ update2: .stamp_settings
 	@touch .stamp_sampledata
 
 resetdb:
-	rm -f ${PROJECT}/db.sqlite3
+	rm -f ${PROJECT_SUBDIR}/db.sqlite3
 	${DJANGO_MANAGE} migrate
 	${DJANGO_MANAGE} loaddata forum/data/categories.json
 	${DJANGO_MANAGE} create_sample_data
@@ -107,7 +108,7 @@ resetdb:
 localinstall: .stamp_sampledata
 	@echo "================================================"
 	@echo "Installation successfull"
-	@echo "For start enter: cd ${PROJECT}; make runserver"
+	@echo "For start enter: cd ${PROJECT_SUBDIR}; make runserver"
 	@echo "Open: http://127.0.0.1:8000 in browser"
 	@echo "================================================"
 EOF
