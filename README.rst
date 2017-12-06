@@ -22,7 +22,7 @@ Create project with name `project_name`:
 
 ::
 
-    . ./install.sh project_name
+    ./install.sh project_name
 
 To run test server
 ------------------
