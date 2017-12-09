@@ -9,12 +9,12 @@ click==6.7                # via pip-tools
 django-appconf==1.0.2     # via django-compressor
 django-compressor==2.2
 django-libsass==0.7
-django==1.11.7
+django==1.11.8
 first==2.0.1              # via pip-tools
 libsass==0.13.4
 olefile==0.44             # via pillow
 pillow==4.3.0
-pip-tools==1.10.1
+pip-tools==1.11.0
 pytz==2017.3              # via django
 rcssmin==1.0.6            # via django-compressor
 rjsmin==1.0.12            # via django-compressor
