@@ -16,7 +16,7 @@ Download install script and make it executable:
 
 ::
 
-    wget https://raw.github.com/mireq/django-frontend-template/master/install.sh&&chmod +x install.sh
+    wget https://raw.github.com/mireq/django-frontend-template/master/install.sh -O install.sh&&chmod +x install.sh
 
 Create project with name `project_name`:
 
