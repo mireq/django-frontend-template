@@ -7,7 +7,7 @@ Install under ubuntu
 
 ::
 
-    sudo apt-get --yes install libjpeg-dev build-essential python-dev libfreetype6-dev git
+    sudo apt-get --yes install libjpeg-dev build-essential python3-dev libfreetype6-dev git
 
 Create project
 --------------

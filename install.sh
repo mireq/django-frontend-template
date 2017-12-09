@@ -33,7 +33,7 @@ echo "PROJECT=$PROJECTNAME" >> $MAKEFILE
 cat << 'EOF' >> ${MAKEFILE}
 PROJECT_SUBDIR=web
 
-PYTHON=python2.7
+PYTHON=python3
 VENV_PYTHON=venv/bin/python
 DJANGO_MANAGE=cd ${PROJECT_SUBDIR}&&DJANGO_SETTINGS_MODULE=web.settings_local ../venv/bin/python manage.py
 
