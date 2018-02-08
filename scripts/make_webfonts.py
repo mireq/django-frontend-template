@@ -43,7 +43,6 @@ def get_font_properties(fontfile):
 
 	if 'Italic' in fontattrs:
 		italic = True
-		fontattrs = fontattrs.replace('Italic', '')
 
 	if 'Thin' in fontattrs or 'Hairline' in fontattrs or '100' in fontattrs:
 		font_weight = 100
