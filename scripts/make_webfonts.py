@@ -49,7 +49,7 @@ def get_font_properties(fontfile):
 		font_weight = 100
 	elif 'Extralight' in fontattrs or 'Ultralight' in fontattrs or '200' in fontattrs:
 		font_weight = 200
-	elif 'Semibold' in fontattrs or 'Demibold' in fontattrs or '600' in fontattrs:
+	elif 'Semibold' in fontattrs or 'Demibold' in fontattrs or 'SemiBold' in fontattrs or '600' in fontattrs:
 		font_weight = 600
 	elif 'Extrabold' in fontattrs or 'Ultrabold' in fontattrs or '800' in fontattrs:
 		font_weight = 800
