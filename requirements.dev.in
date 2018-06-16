@@ -1,10 +1,10 @@
-django<2.0
+django
 django-compressor
 django-libsass
 libsass
 pillow
 pip-tools
--e git+https://github.com/mireq/django-assets-manager.git@4e5e7ea7e4868070edc001a22e525b44bf872c5c#egg=django_assets_manager
+-e git+https://github.com/mireq/django-assets-manager.git@d8677dc8fcf2f6be950792c14f9982478f2063e0#egg=django_assets_manager
 django-extensions
 ipython
 ptpython

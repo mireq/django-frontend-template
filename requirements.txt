@@ -4,18 +4,17 @@
 #
 #    pip-compile --output-file requirements.txt requirements.in
 #
--e git+https://github.com/mireq/django-assets-manager.git@4e5e7ea7e4868070edc001a22e525b44bf872c5c#egg=django_assets_manager
+-e git+https://github.com/mireq/django-assets-manager.git@d8677dc8fcf2f6be950792c14f9982478f2063e0#egg=django_assets_manager
 click==6.7                # via pip-tools
 django-appconf==1.0.2     # via django-compressor
 django-compressor==2.2
 django-libsass==0.7
-django==1.11.8
+django==2.0.6
 first==2.0.1              # via pip-tools
-libsass==0.13.4
-olefile==0.44             # via pillow
-pillow==4.3.0
-pip-tools==1.11.0
-pytz==2017.3              # via django
+libsass==0.14.5
+pillow==5.1.0
+pip-tools==2.0.2
+pytz==2018.4              # via django
 rcssmin==1.0.6            # via django-compressor
 rjsmin==1.0.12            # via django-compressor
 six==1.11.0               # via libsass, pip-tools
