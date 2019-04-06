@@ -11,7 +11,8 @@ import fontforge
 
 
 FONT_FILES_SOURCE_EXTENSIONS = ('.otf', '.woff', '.ttf')
-GENERATE_FONTS = ('.ttf', '.woff', '.eot', '.svg', '.woff2')
+#GENERATE_FONTS = ('.ttf', '.woff', '.eot', '.svg', '.woff2')
+GENERATE_FONTS = ('.ttf', '.woff', '.woff2')
 ALLOWED_CHARS = string.printable + '  ˇ^˘°˛`˙´˝¨\'"¸„“”äáčďéěíľĺňôóřŕšťúůýžÄÁČĎÉĚÍĽĹŇÔÓŘŔŠŤÚŮÝŽ€'
 CLEAN_GLYPH_CLASSES = set(['baseglyph', 'baseligature', 'mark'])
 
@@ -77,22 +78,28 @@ def write_scss_font(fontfile, sourcename, fp):
 	if len(sys.argv) > 1:
 		basename = sys.argv[1] + basename
 	properties = get_font_properties(fontfile)
-	fp.write("@font-face {\n");
-	fp.write("\tfont-family: '%s';\n" % properties['basename']);
-	fp.write("\tfont-weight: %d;\n" % properties['font_weight']);
-	fp.write("\tfont-style: %s;\n" % ('italic' if properties['italic'] else 'normal'));
-	fp.write("\tsrc: url('%s.eot');\n" % basename)
+	fp.write("@font-face {\n")
+	fp.write("\tfont-family: '%s';\n" % properties['basename'])
+	fp.write("\tfont-weight: %d;\n" % properties['font_weight'])
+	fp.write("\tfont-style: %s;\n" % ('italic' if properties['italic'] else 'normal'))
+	if '.eot' in GENERATE_FONTS:
+		fp.write("\tsrc: url('%s.eot');\n" % basename)
 	localfontnames = []
 	localfontnames.append(properties['basename'] + ' ' + properties['attrs'] if properties['attrs'] else properties['basename'])
 	localfontnames.append(properties['basename'] + '-' + properties['attrs'] if properties['attrs'] else properties['basename'])
 	localfontnames.append(properties['familyname'])
-	fp.write("\tsrc: local('%s'), local('%s'), local('%s'),\n" % tuple(localfontnames))
-	fp.write("\t\turl('%s.eot?#iefix') format('embedded-opentype'),\n" % basename)
-	fp.write("\t\turl('%s.woff2') format('woff2'),\n" % basename)
-	fp.write("\t\turl('%s.woff') format('woff'),\n" % basename)
-	fp.write("\t\turl('%s.ttf') format('truetype'),\n" % basename)
-	fp.write("\t\turl('%s.svg?#%s') format('svg');\n" % (basename, properties['attrs'] if properties['attrs'] else 'Regular'))
-	fp.write("}\n\n");
+	fp.write("\tsrc: local('%s'), local('%s'), local('%s')" % tuple(localfontnames))
+	if '.eot' in GENERATE_FONTS:
+		fp.write(",\n\t\turl('%s.eot?#iefix') format('embedded-opentype')" % basename)
+	if '.woff2' in GENERATE_FONTS:
+		fp.write(",\n\t\turl('%s.woff2') format('woff2')" % basename)
+	if '.woff' in GENERATE_FONTS:
+		fp.write(",\n\t\turl('%s.woff') format('woff')" % basename)
+	if '.ttf' in GENERATE_FONTS:
+		fp.write(",\n\t\turl('%s.ttf') format('truetype')" % basename)
+	if '.svg' in GENERATE_FONTS:
+		fp.write(",\n\t\turl('%s.svg?#%s') format('svg')" % (basename, properties['attrs'] if properties['attrs'] else 'Regular'))
+	fp.write(";\n}\n\n")
 
 
 def minimalize_font(font):
