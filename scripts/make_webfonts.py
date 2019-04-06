@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from collections import OrderedDict
 import os
 import string
 import subprocess
@@ -15,6 +16,10 @@ FONT_FILES_SOURCE_EXTENSIONS = ('.otf', '.woff', '.ttf')
 GENERATE_FONTS = ('.ttf', '.woff', '.woff2')
 ALLOWED_CHARS = string.printable + '  ˇ^˘°˛`˙´˝¨\'"¸„“”äáčďéěíľĺňôóřŕšťúůýžÄÁČĎÉĚÍĽĹŇÔÓŘŔŠŤÚŮÝŽ€'
 CLEAN_GLYPH_CLASSES = set(['baseglyph', 'baseligature', 'mark'])
+
+
+def make_uniqe_list(iterable):
+	return list(OrderedDict.fromkeys(iterable))
 
 
 def find_font_source_files():
@@ -89,7 +94,9 @@ def write_scss_font(fontfile, sourcename, fp):
 	localfontnames.append(properties['basename'] + ' ' + properties['attrs'] if properties['attrs'] else properties['basename'])
 	localfontnames.append(properties['basename'] + '-' + properties['attrs'] if properties['attrs'] else properties['basename'])
 	localfontnames.append(properties['familyname'])
-	fp.write("\tsrc: local('%s'), local('%s'), local('%s')" % tuple(localfontnames))
+	localfontnames.append(properties['basename'])
+	localfontnames = ["local('%s')" % name for name in make_uniqe_list(localfontnames)]
+	fp.write("\tsrc: %s" % ', '.join(localfontnames))
 	if '.eot' in GENERATE_FONTS:
 		fp.write(",\n\t\turl('%s.eot?#iefix') format('embedded-opentype')" % basename)
 	if '.woff2' in GENERATE_FONTS:
