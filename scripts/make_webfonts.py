@@ -82,6 +82,7 @@ def write_scss_font(fontfile, sourcename, fp):
 	fp.write("\tfont-family: '%s';\n" % properties['basename'])
 	fp.write("\tfont-weight: %d;\n" % properties['font_weight'])
 	fp.write("\tfont-style: %s;\n" % ('italic' if properties['italic'] else 'normal'))
+	fp.write("\tfont-display: swap;\n")
 	if '.eot' in GENERATE_FONTS:
 		fp.write("\tsrc: url('%s.eot');\n" % basename)
 	localfontnames = []
