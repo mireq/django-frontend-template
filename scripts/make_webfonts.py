@@ -52,7 +52,7 @@ def get_font_properties(fontfile):
 
 	if 'Thin' in fontattrs or 'Hairline' in fontattrs or '100' in fontattrs:
 		font_weight = 100
-	elif 'Extralight' in fontattrs or 'Ultralight' in fontattrs or '200' in fontattrs:
+	elif 'Extralight' in fontattrs or 'Ultralight' in fontattrs or 'ExtraLight' in fontattrs or 'UltraLight' in fontattrs or '200' in fontattrs:
 		font_weight = 200
 	elif 'Light' in fontattrs or '300' in fontattrs:
 		font_weight = 300
