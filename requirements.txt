@@ -12,7 +12,7 @@ django-libsass==0.7
 django==2.0.6
 first==2.0.1              # via pip-tools
 libsass==0.14.5
-pillow==5.1.0
+pillow==6.2.0
 pip-tools==2.0.2
 pytz==2018.4              # via django
 rcssmin==1.0.6            # via django-compressor
