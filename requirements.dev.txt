@@ -14,7 +14,7 @@ django-appconf==1.0.2     # via django-compressor
 django-compressor==2.2
 django-extensions==2.0.7
 django-libsass==0.7
-django==2.0.6
+django==2.2.10
 docopt==0.6.2             # via ptpython
 first==2.0.1              # via pip-tools
 ipython-genutils==0.2.0   # via traitlets
@@ -45,8 +45,8 @@ rcssmin==1.0.6            # via django-compressor
 rjsmin==1.0.12            # via django-compressor
 simplegeneric==0.8.1      # via ipython
 six==1.11.0               # via astroid, django-extensions, libsass, pip-tools, prompt-toolkit, pylint, traitlets
+sqlparse==0.3.0           # via django
 traitlets==4.3.2          # via ipython
-typing==3.6.4             # via django-extensions, ipython
 watchdog==0.8.3
 wcwidth==0.1.7            # via prompt-toolkit
 werkzeug==0.14.1
