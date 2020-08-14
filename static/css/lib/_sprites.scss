@@ -1,15 +1,41 @@
 $hdpi: "(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx)";
 
+$sprite-warnings: "";
+
+@function sprite-get-safe($image) {
+	@if (map-has-key($sprites, $image)) {
+		@return map-get($sprites, $image);
+	}
+	@else {
+		@warn "Sprite #{$image} not found.";
+		@if ($sprite-warnings == "") {
+			$sprite-warnings: "Missing sprites: #{$image}" !global;
+		}
+		@else {
+			$sprite-warnings: $sprite-warnings + ", #{$image}" !global;
+		}
+		$img: (w: 1px, h: 1px, x: 0px, y: 0px, size: 1px 1px, offset: 0px 0px);
+		$sprites: map-merge($sprites, ($image: $img)) !global;
+		@return $img;
+	}
+}
+
 @function sprite-width($image) {
-	@return map-get(map-get($sprites, $image), w);
+	@return map-get(sprite-get-safe($image), w);
 }
 
 @function sprite-height($image) {
-	@return map-get(map-get($sprites, $image), h);
+	@return map-get(sprite-get-safe($image), h);
+}
+
+@function sprite-background-offset($image, $offset_x: 0px, $offset_y: 0px) {
+	$x: map-get(sprite-get-safe($image), x) + $offset_x;
+	$y: map-get(sprite-get-safe($image), y) + $offset_y;
+	@return ((-$x) (-$y));
 }
 
 @mixin sprite-background-position($image) {
-	background-position: map-get(map-get($sprites, $image), offset);
+	background-position: sprite-background-offset($image);
 }
 
 @mixin sprite-geometry($image) {
@@ -18,12 +44,25 @@ $hdpi: "(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5
 	height: sprite-height($image);
 }
 
-@mixin sprite($image) {
+@mixin sprite-base() {
 	background-repeat: no-repeat;
 	background-image: nth(map-get($sprites, _url), 1);
 	background-size: map-get($sprites, _size);
-	@include sprite-geometry($image);
 	@media #{$hdpi} {
 		background-image: nth(map-get($sprites, _url), 2);
 	}
+}
+
+@mixin sprite($image) {
+	@include sprite-base();
+	@include sprite-geometry($image);
+}
+
+.sprite, .sprite-before:before, .sprite-after:after {
+	@include sprite-base();
+}
+
+.no-text {
+	overflow: hidden;
+	text-indent: -9999px;
 }

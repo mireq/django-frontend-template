@@ -1,0 +1,40 @@
+.icon-check, .icon-radio {
+	@extend .sprite;
+	display: inline-block;
+}
+
+.icon-check {
+	@include sprite-geometry(check);
+}
+
+.icon-radio {
+	@include sprite-geometry(radio);
+}
+
+.container {
+	display: grid;
+	column-gap: 16px;
+	row-gap: 16px;
+}
+
+.box {
+	padding: 10px;
+	box-shadow:
+		0 0px 0px 1px rgba(0,0,0,0.04),
+		0 1px 2px rgba(0,0,0,0.07),
+		0 2px 4px rgba(0,0,0,0.07),
+		0 4px 8px rgba(0,0,0,0.07),
+		0 8px 16px rgba(0,0,0,0.07);
+}
+
+@include breakpoint(medium) {
+	.container {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@include breakpoint(large) {
+	.container {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}

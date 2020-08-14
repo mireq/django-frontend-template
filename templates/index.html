@@ -4,9 +4,11 @@
 {% block bodyclass %}index {{ block.super }}{% endblock %}
 
 {% block content %}
+	<a href="/?autoreload&preview">Auto reload</a>
+
 	<h1>Hello world</h1>
 
-	<div class="row">
+	<div class="container">
 		{% for x in 6|get_sequence %}
 			{% include "partials/box_example.html" %}
 		{% endfor %}

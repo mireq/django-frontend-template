@@ -4,4 +4,4 @@ django-libsass
 libsass
 pillow
 pip-tools
--e git+https://github.com/mireq/django-assets-manager.git@d8677dc8fcf2f6be950792c14f9982478f2063e0#egg=django_assets_manager
+-e git+https://github.com/mireq/django-assets-manager.git@8cf7019f5843d7aea227b17fcf07440e67212bad#egg=django_assets_manager

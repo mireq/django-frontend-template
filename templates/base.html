@@ -8,8 +8,11 @@
 	{% compress css %}
 		<link rel="stylesheet" type="text/x-scss" href="{% static "css/style.scss" %}" />
 	{% endcompress %}
+	{% if 'autoreload' in request.GET %}
+		<script src="{% static "js/css_reload.js" %}"></script>
+	{% endif %}
 </head>
-<body class="{% block bodyclass %}{% endblock %}">
+<body class="{% block bodyclass %}{% endblock %}{% if 'preview' in request.GET %} preview{% endif %}">
 {% block body %}
 	{% block header %}
 		<header>
@@ -29,4 +32,3 @@
 {% endblock %}
 </body>
 </html>
-

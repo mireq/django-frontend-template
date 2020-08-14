@@ -1,28 +1,29 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 import os
 
 from django.conf import settings
-from django.conf.urls import url
 from django.conf.urls.static import static
+from django.contrib import admin
+from django.urls import path, re_path
+from django.views.generic import TemplateView
 from django.views.static import serve
 
 from .views import ShowTemplate
 
 
-#from django.contrib import admin
-
-
 IMG_DIR = os.path.join(os.path.dirname(__file__), os.pardir, 'static', 'img')
 
 
-urlpatterns = [
-	#url(r'^admin/', admin.site.urls),
-	url(r'^$', ShowTemplate.as_view(), kwargs={'template': 'index.html'}),
-	url(r'^(?P<path>favicon\.ico)$', serve, {'document_root': IMG_DIR}),
-	url(r'^(?P<template>.*)$', ShowTemplate.as_view()),
-]
+urlpatterns = []
 
 if settings.DEBUG:
+	urlpatterns.append(path('style/', TemplateView.as_view(template_name='partials/style.html')))
 	urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+urlpatterns += [
+	path('admin/', admin.site.urls),
+	path('', ShowTemplate.as_view(), kwargs={'template': 'index.html'}),
+	re_path(r'(?P<path>favicon\.ico)', serve, {'document_root': IMG_DIR}),
+	path('<path:template>', ShowTemplate.as_view()),
+]
