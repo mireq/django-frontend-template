@@ -1,8 +1,7 @@
 #!/usr/bin/env python2.7
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from collections import OrderedDict
+import argparse
 import os
 import string
 import subprocess
@@ -54,6 +53,8 @@ def get_font_properties(fontfile):
 		font_weight = 100
 	elif 'Extralight' in fontattrs or 'Ultralight' in fontattrs or 'ExtraLight' in fontattrs or 'UltraLight' in fontattrs or '200' in fontattrs:
 		font_weight = 200
+	elif 'Extrabold' in fontattrs or 'Ultrabold' in fontattrs or 'ExtraBold' in fontattrs or 'UltraBold' in fontattrs or '800' in fontattrs:
+		font_weight = 800
 	elif 'Light' in fontattrs or '300' in fontattrs:
 		font_weight = 300
 	elif 'Normal' in fontattrs or 'Book' in fontattrs or 'Regular' in fontattrs or '400' in fontattrs:
@@ -64,8 +65,6 @@ def get_font_properties(fontfile):
 		font_weight = 600
 	elif 'Bold' in fontattrs or '700' in fontattrs:
 		font_weight = 700
-	elif 'Extrabold' in fontattrs or 'Ultrabold' in fontattrs or '800' in fontattrs:
-		font_weight = 800
 	elif 'Black' in fontattrs or 'Heavy' in fontattrs or '900' in fontattrs:
 		font_weight = 900
 
@@ -78,13 +77,16 @@ def get_font_properties(fontfile):
 	}
 
 
-def write_scss_font(fontfile, sourcename, fp):
-	basename = os.path.splitext(sourcename)[0]
-	if len(sys.argv) > 1:
-		basename = sys.argv[1] + basename
+def write_scss_font(fontfile, sourcename, fp, args):
 	properties = get_font_properties(fontfile)
+	basename = os.path.splitext(sourcename)[0]
+	if args.static_prefix:
+		basename = args.static_prefix + basename
+	font_family = properties['basename']
+	if args.font_family:
+		font_family = args.font_family
 	fp.write("@font-face {\n")
-	fp.write("\tfont-family: '%s';\n" % properties['basename'])
+	fp.write("\tfont-family: '%s';\n" % font_family)
 	fp.write("\tfont-weight: %d;\n" % properties['font_weight'])
 	fp.write("\tfont-style: %s;\n" % ('italic' if properties['italic'] else 'normal'))
 	fp.write("\tfont-display: swap;\n")
@@ -120,6 +122,11 @@ def minimalize_font(font):
 
 
 def main():
+	parser = argparse.ArgumentParser(description="Generate web fonts")
+	parser.add_argument('--static_prefix', help="Generate with prefix (starting from /static/ directory)")
+	parser.add_argument('--font_family', help="Set font family")
+	args = parser.parse_args()
+
 	with open('_fonts.scss', 'w') as scss_fp:
 		for filename in find_font_source_files():
 			fontfile = fontforge.open(filename)
@@ -131,7 +138,7 @@ def main():
 					if ALLOWED_CHARS is not None:
 						minimalize_font(fontfile)
 					fontfile.generate(font_output)
-			write_scss_font(fontfile, filename, scss_fp)
+			write_scss_font(fontfile, filename, scss_fp, args)
 
 
 if __name__ == "__main__":
