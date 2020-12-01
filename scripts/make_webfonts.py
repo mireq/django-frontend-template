@@ -14,8 +14,8 @@ import fontforge
 FONT_FILES_SOURCE_EXTENSIONS = ('.otf', '.woff', '.ttf')
 #GENERATE_FONTS = ('.ttf', '.woff', '.eot', '.svg', '.woff2')
 GENERATE_FONTS = ('.ttf', '.woff', '.woff2')
-ALLOWED_CHARS = string.printable + '  ˇ^˘°˛`˙´˝¨\'"¸„“”äáčďéěíľĺňôóřŕšťúůýžÄÁČĎÉĚÍĽĹŇÔÓŘŔŠŤÚŮÝŽ€'
-CLEAN_GLYPH_CLASSES = set(['baseglyph', 'baseligature', 'mark'])
+ALLOWED_CHARS = string.printable + '  ˇ^˘°˛`˙´˝¨\'"¸„“”äáčďéěíľĺňôóřŕšťúůýžÄÁČĎÉĚÍĽĹŇÔÓŘŔŠŤÚŮÝŽ€§'
+CLEAN_GLYPH_CLASSES = set(['baseglyph', 'baseligature', 'mark', 'automatic'])
 
 
 def make_uniqe_list(iterable):
@@ -89,7 +89,7 @@ def write_scss_font(fontfile, sourcename, fp):
 	fp.write("\tfont-style: %s;\n" % ('italic' if properties['italic'] else 'normal'))
 	fp.write("\tfont-display: swap;\n")
 	if '.eot' in GENERATE_FONTS:
-		fp.write("\tsrc: url('%s.eot');\n" % basename)
+		fp.write("\tsrc: url(static('%s.eot'));\n" % basename)
 	localfontnames = []
 	localfontnames.append(properties['basename'] + ' ' + properties['attrs'] if properties['attrs'] else properties['basename'])
 	localfontnames.append(properties['basename'] + '-' + properties['attrs'] if properties['attrs'] else properties['basename'])
@@ -98,15 +98,15 @@ def write_scss_font(fontfile, sourcename, fp):
 	localfontnames = ["local('%s')" % name for name in make_uniqe_list(localfontnames)]
 	fp.write("\tsrc: %s" % ', '.join(localfontnames))
 	if '.eot' in GENERATE_FONTS:
-		fp.write(",\n\t\turl('%s.eot?#iefix') format('embedded-opentype')" % basename)
+		fp.write(",\n\t\turl(#{static(\"%s.eot\")}?#iefix) format('embedded-opentype')" % basename)
 	if '.woff2' in GENERATE_FONTS:
-		fp.write(",\n\t\turl('%s.woff2') format('woff2')" % basename)
+		fp.write(",\n\t\turl(static('%s.woff2')) format('woff2')" % basename)
 	if '.woff' in GENERATE_FONTS:
-		fp.write(",\n\t\turl('%s.woff') format('woff')" % basename)
+		fp.write(",\n\t\turl(static('%s.woff')) format('woff')" % basename)
 	if '.ttf' in GENERATE_FONTS:
-		fp.write(",\n\t\turl('%s.ttf') format('truetype')" % basename)
+		fp.write(",\n\t\turl(static('%s.ttf')) format('truetype')" % basename)
 	if '.svg' in GENERATE_FONTS:
-		fp.write(",\n\t\turl('%s.svg?#%s') format('svg')" % (basename, properties['attrs'] if properties['attrs'] else 'Regular'))
+		fp.write(",\n\t\turl(#{static(\"%s.svg\")}?#%s) format('svg')" % (basename, properties['attrs'] if properties['attrs'] else 'Regular'))
 	fp.write(";\n}\n\n")
 
 
