@@ -5,20 +5,44 @@
 #    pip-compile requirements.in
 #
 -e git+https://github.com/mireq/django-assets-manager.git@8cf7019f5843d7aea227b17fcf07440e67212bad#egg=django_assets_manager  # via -r requirements.in
-asgiref==3.2.10           # via django
-click==7.1.2              # via pip-tools
-django-appconf==1.0.4     # via django-compressor
-django-compressor==2.4    # via -r requirements.in, django-libsass
-django-libsass==0.8       # via -r requirements.in
-django==3.1               # via -r requirements.in, django-appconf
-libsass==0.20.0           # via -r requirements.in, django-libsass
-pillow==7.2.0             # via -r requirements.in
-pip-tools==5.3.1          # via -r requirements.in
-pytz==2020.1              # via django
-rcssmin==1.0.6            # via django-compressor
-rjsmin==1.1.0             # via django-compressor
-six==1.15.0               # via django-compressor, libsass, pip-tools
-sqlparse==0.3.1           # via django
+    # via -r requirements.in
+asgiref==3.2.10
+    # via django
+click==7.1.2
+    # via pip-tools
+django-appconf==1.0.4
+    # via django-compressor
+django-compressor==2.4
+    # via
+    #   -r requirements.in
+    #   django-libsass
+django-libsass==0.8
+    # via -r requirements.in
+django==3.1.10
+    # via
+    #   -r requirements.in
+    #   django-appconf
+libsass==0.20.0
+    # via
+    #   -r requirements.in
+    #   django-libsass
+pillow==7.2.0
+    # via -r requirements.in
+pip-tools==5.3.1
+    # via -r requirements.in
+pytz==2020.1
+    # via django
+rcssmin==1.0.6
+    # via django-compressor
+rjsmin==1.1.0
+    # via django-compressor
+six==1.15.0
+    # via
+    #   django-compressor
+    #   libsass
+    #   pip-tools
+sqlparse==0.3.1
+    # via django
 
 # The following packages are considered to be unsafe in a requirements file:
 # pip
