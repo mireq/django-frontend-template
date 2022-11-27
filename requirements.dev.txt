@@ -76,7 +76,7 @@ ptyprocess==0.6.0
     # via pexpect
 pydotplus==2.0.2
     # via -r requirements.dev.in
-pygments==2.6.1
+pygments==2.7.4
     # via
     #   ipython
     #   ptpython
