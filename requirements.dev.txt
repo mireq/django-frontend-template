@@ -12,14 +12,14 @@ asgiref==3.2.10
     # via django
 astroid==2.4.2
     # via pylint
+asttokens==2.2.1
+    # via stack-data
 backcall==0.2.0
     # via ipython
 click==7.1.2
     # via pip-tools
 decorator==4.4.2
-    # via
-    #   ipython
-    #   traitlets
+    # via ipython
 django==3.1.14
     # via
     #   -r requirements.dev.in
@@ -34,10 +34,10 @@ django-extensions==3.0.5
     # via -r requirements.dev.in
 django-libsass==0.8
     # via -r requirements.dev.in
-ipython==7.31.1
+executing==1.2.0
+    # via stack-data
+ipython==8.10.0
     # via -r requirements.dev.in
-ipython-genutils==0.2.0
-    # via traitlets
 isort==4.3.21
     # via pylint
 jedi==0.17.2
@@ -66,7 +66,7 @@ pillow==9.3.0
     # via -r requirements.dev.in
 pip-tools==5.3.1
     # via -r requirements.dev.in
-prompt-toolkit==3.0.6
+prompt-toolkit==3.0.36
     # via
     #   ipython
     #   ptpython
@@ -74,6 +74,8 @@ ptpython==3.0.5
     # via -r requirements.dev.in
 ptyprocess==0.6.0
     # via pexpect
+pure-eval==0.2.2
+    # via stack-data
 pydotplus==2.0.2
     # via -r requirements.dev.in
 pygments==2.7.4
@@ -99,15 +101,17 @@ rjsmin==1.1.0
 six==1.15.0
     # via
     #   astroid
+    #   asttokens
     #   django-compressor
     #   libsass
     #   pip-tools
-    #   traitlets
 sqlparse==0.3.1
     # via django
+stack-data==0.6.2
+    # via ipython
 toml==0.10.1
     # via pylint
-traitlets==4.3.3
+traitlets==5.9.0
     # via
     #   ipython
     #   matplotlib-inline
@@ -122,4 +126,3 @@ wrapt==1.12.1
 
 # The following packages are considered to be unsafe in a requirements file:
 # pip
-# setuptools
