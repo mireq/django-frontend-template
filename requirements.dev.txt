@@ -50,6 +50,8 @@ libsass==0.20.0
     # via
     #   -r requirements.dev.in
     #   django-libsass
+markupsafe==2.1.2
+    # via werkzeug
 matplotlib-inline==0.1.6
     # via ipython
 mccabe==0.6.1
@@ -119,7 +121,7 @@ watchdog==0.10.3
     # via -r requirements.dev.in
 wcwidth==0.2.5
     # via prompt-toolkit
-werkzeug==1.0.1
+werkzeug==2.2.3
     # via -r requirements.dev.in
 wrapt==1.12.1
     # via astroid
