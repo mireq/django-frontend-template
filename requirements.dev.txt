@@ -80,7 +80,7 @@ pure-eval==0.2.2
     # via stack-data
 pydotplus==2.0.2
     # via -r requirements.dev.in
-pygments==2.7.4
+pygments==2.15.0
     # via
     #   ipython
     #   ptpython
