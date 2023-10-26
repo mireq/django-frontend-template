@@ -121,7 +121,7 @@ watchdog==0.10.3
     # via -r requirements.dev.in
 wcwidth==0.2.5
     # via prompt-toolkit
-werkzeug==2.2.3
+werkzeug==3.0.1
     # via -r requirements.dev.in
 wrapt==1.12.1
     # via astroid
