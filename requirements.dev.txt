@@ -8,7 +8,7 @@
     # via -r requirements.dev.in
 appdirs==1.4.4
     # via ptpython
-asgiref==3.2.10
+asgiref==3.8.1
     # via django
 astroid==2.4.2
     # via pylint
@@ -20,7 +20,7 @@ click==7.1.2
     # via pip-tools
 decorator==4.4.2
     # via ipython
-django==3.1.14
+django==4.2.22
     # via
     #   -r requirements.dev.in
     #   django-appconf
@@ -94,8 +94,6 @@ pylint-plugin-utils==0.6
     # via pylint-django
 pyparsing==2.4.7
     # via pydotplus
-pytz==2020.1
-    # via django
 rcssmin==1.0.6
     # via django-compressor
 rjsmin==1.1.0
@@ -117,6 +115,8 @@ traitlets==5.9.0
     # via
     #   ipython
     #   matplotlib-inline
+typing-extensions==4.14.0
+    # via asgiref
 watchdog==0.10.3
     # via -r requirements.dev.in
 wcwidth==0.2.5

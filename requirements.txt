@@ -6,11 +6,11 @@
 #
 -e git+https://github.com/mireq/django-assets-manager.git@8cf7019f5843d7aea227b17fcf07440e67212bad#egg=django_assets_manager  # via -r requirements.in
     # via -r requirements.in
-asgiref==3.2.10
+asgiref==3.8.1
     # via django
 click==7.1.2
     # via pip-tools
-django==3.1.14
+django==4.2.22
     # via
     #   -r requirements.in
     #   django-appconf
@@ -30,8 +30,6 @@ pillow==10.0.1
     # via -r requirements.in
 pip-tools==5.3.1
     # via -r requirements.in
-pytz==2020.1
-    # via django
 rcssmin==1.0.6
     # via django-compressor
 rjsmin==1.1.0
@@ -43,6 +41,8 @@ six==1.15.0
     #   pip-tools
 sqlparse==0.4.4
     # via django
+typing-extensions==4.14.0
+    # via asgiref
 
 # The following packages are considered to be unsafe in a requirements file:
 # pip
