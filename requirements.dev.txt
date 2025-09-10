@@ -105,7 +105,7 @@ six==1.15.0
     #   django-compressor
     #   libsass
     #   pip-tools
-sqlparse==0.4.4
+sqlparse==0.5.0
     # via django
 stack-data==0.6.2
     # via ipython
