@@ -10,7 +10,7 @@ asgiref==3.9.1
     # via django
 click==7.1.2
     # via pip-tools
-django==4.2.24
+django==4.2.25
     # via
     #   -r requirements.in
     #   django-appconf
