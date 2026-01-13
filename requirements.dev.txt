@@ -20,7 +20,7 @@ click==7.1.2
     # via pip-tools
 decorator==4.4.2
     # via ipython
-django==4.2.24
+django==4.2.25
     # via
     #   -r requirements.dev.in
     #   django-appconf
